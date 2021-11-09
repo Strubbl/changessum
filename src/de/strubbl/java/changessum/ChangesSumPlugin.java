@@ -1,10 +1,5 @@
 package de.strubbl.java.changessum;
 
-import java.util.List;
-
-import org.openstreetmap.josm.data.APIDataSet;
-import org.openstreetmap.josm.data.osm.OsmPrimitive;
-import org.openstreetmap.josm.gui.MainApplication;
 import org.openstreetmap.josm.gui.MapFrame;
 import org.openstreetmap.josm.plugins.Plugin;
 import org.openstreetmap.josm.plugins.PluginInformation;
@@ -26,13 +21,6 @@ public class ChangesSumPlugin extends Plugin {
 		if (oldFrame == null && newFrame != null) { // map frame added
 			Logging.debug("ChangesSumPlugin mapFrameInitialized: map frame added");
 		}
-		getObjectChangesSum();
 	}
 
-	private int getObjectChangesSum() {
-		APIDataSet apiData = new APIDataSet(MainApplication.getLayerManager().getEditDataSet());
-		List<OsmPrimitive> l = apiData.getPrimitives();
-		Logging.info("ChangesSumPlugin getObjectChangesSum: l.size()=" + l.size());
-		return l.size();
-	}
 }
