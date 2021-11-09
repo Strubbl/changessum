@@ -6,6 +6,8 @@ import org.openstreetmap.josm.plugins.PluginInformation;
 import org.openstreetmap.josm.tools.Logging;
 
 public class ChangesSumPlugin extends Plugin {
+	private LayerListener l;
+
 	/**
 	 * Will be invoked by JOSM to bootstrap the plugin
 	 *
@@ -20,6 +22,7 @@ public class ChangesSumPlugin extends Plugin {
 	public void mapFrameInitialized(MapFrame oldFrame, MapFrame newFrame) {
 		if (oldFrame == null && newFrame != null) { // map frame added
 			Logging.debug("ChangesSumPlugin mapFrameInitialized: map frame added");
+			l = new LayerListener();
 		}
 	}
 
