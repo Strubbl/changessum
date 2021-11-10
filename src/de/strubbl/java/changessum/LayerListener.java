@@ -1,20 +1,39 @@
 package de.strubbl.java.changessum;
 
 import org.openstreetmap.josm.gui.MainApplication;
+import org.openstreetmap.josm.gui.layer.LayerManager.LayerAddEvent;
+import org.openstreetmap.josm.gui.layer.LayerManager.LayerChangeListener;
+import org.openstreetmap.josm.gui.layer.LayerManager.LayerOrderChangeEvent;
+import org.openstreetmap.josm.gui.layer.LayerManager.LayerRemoveEvent;
 import org.openstreetmap.josm.gui.layer.MainLayerManager.ActiveLayerChangeEvent;
 import org.openstreetmap.josm.gui.layer.MainLayerManager.ActiveLayerChangeListener;
 import org.openstreetmap.josm.tools.Logging;
 import org.openstreetmap.josm.gui.layer.OsmDataLayer;
 
-public class LayerListener implements ActiveLayerChangeListener{
+public class LayerListener implements LayerChangeListener, ActiveLayerChangeListener {
 	private final ChangeListener changeListener = new ChangeListener();
+
+	@Override
+	public void layerAdded(LayerAddEvent e) {
+		Logging.info("ChangesSumPlugin layerAdded");
+	}
+
+	@Override
+	public void layerOrderChanged(LayerOrderChangeEvent e) {
+		Logging.info("ChangesSumPlugin layerOrderChanged");
+	}
+
+	@Override
+	public void layerRemoving(LayerRemoveEvent e) {
+		Logging.info("ChangesSumPlugin layerRemoving");
+	}
 
 	@Override
 	public void activeOrEditLayerChanged(ActiveLayerChangeEvent e) {
 		Logging.info("ChangesSumPlugin LayerListener activeOrEditLayerChanged: ActiveLayerChangeEvent=" + e);
-		OsmDataLayer old = e.getPreviousDataLayer();
-		if (old != null) {
-			old.getDataSet().removeDataSetListener(changeListener);
+		OsmDataLayer oldL = e.getPreviousDataLayer();
+		if (oldL != null) {
+			oldL.getDataSet().removeDataSetListener(changeListener);
 		}
 		OsmDataLayer newL = MainApplication.getLayerManager().getEditLayer();
 		if (newL != null) {

@@ -1,5 +1,6 @@
 package de.strubbl.java.changessum;
 
+import org.openstreetmap.josm.gui.MainApplication;
 import org.openstreetmap.josm.gui.MapFrame;
 import org.openstreetmap.josm.plugins.Plugin;
 import org.openstreetmap.josm.plugins.PluginInformation;
@@ -17,12 +18,14 @@ public class ChangesSumPlugin extends Plugin {
 		super(info);
 		// init your plugin
 		Logging.debug("ChangesSumPlugin constructor");
+		l = new LayerListener();
+		MainApplication.getLayerManager().addLayerChangeListener(l);
 	}
 
+	@Override
 	public void mapFrameInitialized(MapFrame oldFrame, MapFrame newFrame) {
 		if (oldFrame == null && newFrame != null) { // map frame added
 			Logging.debug("ChangesSumPlugin mapFrameInitialized: map frame added");
-			l = new LayerListener();
 		}
 	}
 
