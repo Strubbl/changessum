@@ -26,12 +26,17 @@ public class LayerListener implements LayerChangeListener, ActiveLayerChangeList
 
 	@Override
 	public void layerOrderChanged(LayerOrderChangeEvent e) {
-		Logging.info("ChangesSumPlugin layerOrderChanged");
+		Logging.debug("ChangesSumPlugin layerOrderChanged");
 	}
 
 	@Override
 	public void layerRemoving(LayerRemoveEvent e) {
-		Logging.info("ChangesSumPlugin layerRemoving");
+		Logging.debug("ChangesSumPlugin layerRemoving");
+		Layer removedL = e.getRemovedLayer();
+		if (removedL instanceof OsmDataLayer) {
+			Logging.info("ChangesSumPlugin layerRemoving: removed layer is instance of OsmDataLayer");
+			((OsmDataLayer) removedL).getDataSet().removeDataSetListener(changeListener);
+		}
 	}
 
 	@Override

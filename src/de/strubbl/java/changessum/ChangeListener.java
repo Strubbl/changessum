@@ -20,54 +20,54 @@ public class ChangeListener implements DataSetListener {
 
 	@Override
 	public void dataChanged(DataChangedEvent e) {
-		Logging.info("ChangesSumPlugin ChangeListener dataChanged: e=" + e);
+		Logging.debug("ChangesSumPlugin ChangeListener dataChanged: e=" + e);
 		getObjectChangesSum();
 	}
 
 	@Override
 	public void nodeMoved(NodeMovedEvent e) {
-		Logging.info("ChangesSumPlugin ChangeListener nodeMoved: e=" + e);
+		Logging.debug("ChangesSumPlugin ChangeListener nodeMoved: e=" + e);
 		getObjectChangesSum();
 	}
 
 	@Override
 	public void otherDatasetChange(AbstractDatasetChangedEvent e) {
-		Logging.info("ChangesSumPlugin ChangeListener otherDatasetChange: e=" + e);
+		Logging.debug("ChangesSumPlugin ChangeListener otherDatasetChange: e=" + e);
 		getObjectChangesSum();
 	}
 
 	@Override
 	public void primitivesAdded(PrimitivesAddedEvent e) {
-		Logging.info("ChangesSumPlugin ChangeListener primitivesAdded: e=" + e);
+		Logging.debug("ChangesSumPlugin ChangeListener primitivesAdded: e=" + e);
 		getObjectChangesSum();
 	}
 
 	@Override
 	public void primitivesRemoved(PrimitivesRemovedEvent e) {
-		Logging.info("ChangesSumPlugin ChangeListener primitivesRemoved: e=" + e);
+		Logging.debug("ChangesSumPlugin ChangeListener primitivesRemoved: e=" + e);
 		getObjectChangesSum();
 	}
 
 	@Override
 	public void relationMembersChanged(RelationMembersChangedEvent e) {
-		Logging.info("ChangesSumPlugin ChangeListener relationMembersChanged: e=" + e);
+		Logging.debug("ChangesSumPlugin ChangeListener relationMembersChanged: e=" + e);
 		getObjectChangesSum();
 	}
 
 	@Override
 	public void tagsChanged(TagsChangedEvent e) {
-		Logging.info("ChangesSumPlugin ChangeListener tagsChanged: e=" + e);
+		Logging.debug("ChangesSumPlugin ChangeListener tagsChanged: e=" + e);
 		getObjectChangesSum();
 	}
 
 	@Override
 	public void wayNodesChanged(WayNodesChangedEvent e) {
-		Logging.info("ChangesSumPlugin ChangeListener wayNodesChanged: e=" + e);
+		Logging.debug("ChangesSumPlugin ChangeListener wayNodesChanged: e=" + e);
 		getObjectChangesSum();
 	}
 
 	private int getObjectChangesSum() {
-		Logging.info("ChangesSumPlugin ChangeListener getObjectChangesSum");
+		Logging.debug("ChangesSumPlugin ChangeListener getObjectChangesSum");
 		APIDataSet apiData = new APIDataSet(MainApplication.getLayerManager().getEditDataSet());
 		List<OsmPrimitive> l = apiData.getPrimitives();
 		Logging.info("ChangesSumPlugin getObjectChangesSum: l.size()=" + l.size());
