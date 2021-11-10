@@ -17,15 +17,16 @@ public class ChangesSumPlugin extends Plugin {
 	public ChangesSumPlugin(PluginInformation info) {
 		super(info);
 		// init your plugin
-		Logging.debug("ChangesSumPlugin constructor");
+		Logging.info("ChangesSumPlugin constructor");
 		l = new LayerListener();
 		MainApplication.getLayerManager().addLayerChangeListener(l);
 	}
 
 	@Override
 	public void mapFrameInitialized(MapFrame oldFrame, MapFrame newFrame) {
+		Logging.info("ChangesSumPlugin mapFrameInitialized");
 		if (oldFrame == null && newFrame != null) { // map frame added
-			Logging.debug("ChangesSumPlugin mapFrameInitialized: map frame added");
+			Logging.info("ChangesSumPlugin mapFrameInitialized: map frame added");
 		}
 	}
 

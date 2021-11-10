@@ -1,6 +1,7 @@
 package de.strubbl.java.changessum;
 
 import org.openstreetmap.josm.gui.MainApplication;
+import org.openstreetmap.josm.gui.layer.Layer;
 import org.openstreetmap.josm.gui.layer.LayerManager.LayerAddEvent;
 import org.openstreetmap.josm.gui.layer.LayerManager.LayerChangeListener;
 import org.openstreetmap.josm.gui.layer.LayerManager.LayerOrderChangeEvent;
@@ -16,6 +17,11 @@ public class LayerListener implements LayerChangeListener, ActiveLayerChangeList
 	@Override
 	public void layerAdded(LayerAddEvent e) {
 		Logging.info("ChangesSumPlugin layerAdded");
+		Layer addedL = e.getAddedLayer();
+		if (addedL instanceof OsmDataLayer) {
+			Logging.info("ChangesSumPlugin layerAdded: added layer is instance of OsmDataLayer");
+			((OsmDataLayer) addedL).getDataSet().addDataSetListener(changeListener);
+		}
 	}
 
 	@Override
