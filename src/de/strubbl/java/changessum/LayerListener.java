@@ -11,7 +11,7 @@ public class LayerListener implements ActiveLayerChangeListener{
 
 	@Override
 	public void activeOrEditLayerChanged(ActiveLayerChangeEvent e) {
-		Logging.debug("LayerListener activeOrEditLayerChanged: ActiveLayerChangeEvent=" + e);
+		Logging.info("ChangesSumPlugin LayerListener activeOrEditLayerChanged: ActiveLayerChangeEvent=" + e);
 		OsmDataLayer old = e.getPreviousDataLayer();
 		if (old != null) {
 			old.getDataSet().removeDataSetListener(changeListener);
