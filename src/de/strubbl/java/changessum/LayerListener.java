@@ -23,10 +23,10 @@ public class LayerListener implements LayerChangeListener, ActiveLayerChangeList
 
 	@Override
 	public void layerAdded(LayerAddEvent e) {
-		Logging.info("ChangesSumPlugin layerAdded");
+		Logging.debug("ChangesSumPlugin layerAdded");
 		Layer addedL = e.getAddedLayer();
 		if (addedL instanceof OsmDataLayer) {
-			Logging.info("ChangesSumPlugin layerAdded: added layer is instance of OsmDataLayer");
+			Logging.debug("ChangesSumPlugin layerAdded: added layer is instance of OsmDataLayer");
 			((OsmDataLayer) addedL).getDataSet().addDataSetListener(changeListener);
 		}
 	}
@@ -41,14 +41,14 @@ public class LayerListener implements LayerChangeListener, ActiveLayerChangeList
 		Logging.debug("ChangesSumPlugin layerRemoving");
 		Layer removedL = e.getRemovedLayer();
 		if (removedL instanceof OsmDataLayer) {
-			Logging.info("ChangesSumPlugin layerRemoving: removed layer is instance of OsmDataLayer");
+			Logging.debug("ChangesSumPlugin layerRemoving: removed layer is instance of OsmDataLayer");
 			((OsmDataLayer) removedL).getDataSet().removeDataSetListener(changeListener);
 		}
 	}
 
 	@Override
 	public void activeOrEditLayerChanged(ActiveLayerChangeEvent e) {
-		Logging.info("ChangesSumPlugin LayerListener activeOrEditLayerChanged: ActiveLayerChangeEvent=" + e);
+		Logging.debug("ChangesSumPlugin LayerListener activeOrEditLayerChanged: ActiveLayerChangeEvent=" + e);
 		OsmDataLayer oldL = e.getPreviousDataLayer();
 		if (oldL != null) {
 			oldL.getDataSet().removeDataSetListener(changeListener);

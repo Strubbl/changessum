@@ -25,7 +25,7 @@ public class ChangesSumPlugin extends Plugin {
 	public ChangesSumPlugin(PluginInformation info) {
 		super(info);
 		// init your plugin
-		Logging.info("ChangesSumPlugin constructor");
+		Logging.debug("ChangesSumPlugin constructor");
 		changesSum = 0;
 		l = new LayerListener(this);
 		MainApplication.getLayerManager().addLayerChangeListener(l);
@@ -48,7 +48,7 @@ public class ChangesSumPlugin extends Plugin {
 	}
 
 	public void updateChangesSumLabel(int newSum) {
-		Logging.info("ChangesSumPlugin updateChangesSumLabel: newSum=" + newSum);
+		Logging.debug("ChangesSumPlugin updateChangesSumLabel: newSum=" + newSum);
 		changesSum = newSum;
 		changesLabel.setText(changesSumPrefixText + changesSum);
 	}

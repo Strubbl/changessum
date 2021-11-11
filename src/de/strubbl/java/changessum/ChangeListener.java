@@ -76,7 +76,7 @@ public class ChangeListener implements DataSetListener {
 		Logging.debug("ChangesSumPlugin ChangeListener getObjectChangesSum");
 		APIDataSet apiData = new APIDataSet(MainApplication.getLayerManager().getEditDataSet());
 		List<OsmPrimitive> l = apiData.getPrimitives();
-		Logging.info("ChangesSumPlugin getObjectChangesSum: l.size()=" + l.size());
+		Logging.debug("ChangesSumPlugin getObjectChangesSum: l.size()=" + l.size());
 		return l.size();
 	}
 }
