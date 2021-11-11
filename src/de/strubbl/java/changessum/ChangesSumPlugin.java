@@ -31,6 +31,7 @@ public class ChangesSumPlugin extends Plugin {
 		MainApplication.getLayerManager().addLayerChangeListener(l);
 	}
 
+	@Override
 	public void mapFrameInitialized(MapFrame oldF, MapFrame newF) {
 		if (oldF == null && newF != null) {
 			addChangesSumToStatusBar();
