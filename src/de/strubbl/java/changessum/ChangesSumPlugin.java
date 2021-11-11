@@ -15,6 +15,7 @@ public class ChangesSumPlugin extends Plugin {
 	private MapFrame mf;
 	private JLabel changesLabel;
 	private int changesSum;
+	private final String changesSumPrefixText = "changes ∑ = ";
 
 	/**
 	 * Will be invoked by JOSM to bootstrap the plugin
@@ -40,7 +41,7 @@ public class ChangesSumPlugin extends Plugin {
 		mf = MainApplication.getMap();
 		MapStatus ms = mf.statusLine;
 		if (ms != null && Config.getPref().getBoolean("statusline.visible", true)) {
-			changesLabel = new JLabel("sum:" + changesSum);
+			changesLabel = new JLabel(changesSumPrefixText + changesSum);
 			ms.add(changesLabel);
 		}
 	}
@@ -48,6 +49,6 @@ public class ChangesSumPlugin extends Plugin {
 	public void updateChangesSumLabel(int newSum) {
 		Logging.info("ChangesSumPlugin updateChangesSumLabel: newSum=" + newSum);
 		changesSum = newSum;
-		changesLabel.setText("sum: " + changesSum);
+		changesLabel.setText(changesSumPrefixText + changesSum);
 	}
 }
