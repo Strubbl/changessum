@@ -24,7 +24,6 @@ public class ChangesSumPlugin extends Plugin {
 	 */
 	public ChangesSumPlugin(PluginInformation info) {
 		super(info);
-		// init your plugin
 		Logging.debug("ChangesSumPlugin constructor");
 		changesSum = 0;
 		l = new LayerListener(this);
