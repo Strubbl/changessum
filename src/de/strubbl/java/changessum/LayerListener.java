@@ -8,11 +8,18 @@ import org.openstreetmap.josm.gui.layer.LayerManager.LayerOrderChangeEvent;
 import org.openstreetmap.josm.gui.layer.LayerManager.LayerRemoveEvent;
 import org.openstreetmap.josm.gui.layer.MainLayerManager.ActiveLayerChangeEvent;
 import org.openstreetmap.josm.gui.layer.MainLayerManager.ActiveLayerChangeListener;
-import org.openstreetmap.josm.tools.Logging;
 import org.openstreetmap.josm.gui.layer.OsmDataLayer;
+import org.openstreetmap.josm.tools.Logging;
 
 public class LayerListener implements LayerChangeListener, ActiveLayerChangeListener {
-	private final ChangeListener changeListener = new ChangeListener();
+	private final ChangeListener changeListener;
+	public ChangesSumPlugin p;
+
+	public LayerListener(ChangesSumPlugin p) {
+		super();
+		this.p = p;
+		changeListener = new ChangeListener(this);
+	}
 
 	@Override
 	public void layerAdded(LayerAddEvent e) {

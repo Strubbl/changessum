@@ -17,53 +17,59 @@ import org.openstreetmap.josm.gui.MainApplication;
 import org.openstreetmap.josm.tools.Logging;
 
 public class ChangeListener implements DataSetListener {
+	public LayerListener l;
+
+	public ChangeListener(LayerListener l) {
+		super();
+		this.l = l;
+	}
 
 	@Override
 	public void dataChanged(DataChangedEvent e) {
 		Logging.debug("ChangesSumPlugin ChangeListener dataChanged: e=" + e);
-		getObjectChangesSum();
+		l.p.updateChangesSumLabel(getObjectChangesSum());
 	}
 
 	@Override
 	public void nodeMoved(NodeMovedEvent e) {
 		Logging.debug("ChangesSumPlugin ChangeListener nodeMoved: e=" + e);
-		getObjectChangesSum();
+		l.p.updateChangesSumLabel(getObjectChangesSum());
 	}
 
 	@Override
 	public void otherDatasetChange(AbstractDatasetChangedEvent e) {
 		Logging.debug("ChangesSumPlugin ChangeListener otherDatasetChange: e=" + e);
-		getObjectChangesSum();
+		l.p.updateChangesSumLabel(getObjectChangesSum());
 	}
 
 	@Override
 	public void primitivesAdded(PrimitivesAddedEvent e) {
 		Logging.debug("ChangesSumPlugin ChangeListener primitivesAdded: e=" + e);
-		getObjectChangesSum();
+		l.p.updateChangesSumLabel(getObjectChangesSum());
 	}
 
 	@Override
 	public void primitivesRemoved(PrimitivesRemovedEvent e) {
 		Logging.debug("ChangesSumPlugin ChangeListener primitivesRemoved: e=" + e);
-		getObjectChangesSum();
+		l.p.updateChangesSumLabel(getObjectChangesSum());
 	}
 
 	@Override
 	public void relationMembersChanged(RelationMembersChangedEvent e) {
 		Logging.debug("ChangesSumPlugin ChangeListener relationMembersChanged: e=" + e);
-		getObjectChangesSum();
+		l.p.updateChangesSumLabel(getObjectChangesSum());
 	}
 
 	@Override
 	public void tagsChanged(TagsChangedEvent e) {
 		Logging.debug("ChangesSumPlugin ChangeListener tagsChanged: e=" + e);
-		getObjectChangesSum();
+		l.p.updateChangesSumLabel(getObjectChangesSum());
 	}
 
 	@Override
 	public void wayNodesChanged(WayNodesChangedEvent e) {
 		Logging.debug("ChangesSumPlugin ChangeListener wayNodesChanged: e=" + e);
-		getObjectChangesSum();
+		l.p.updateChangesSumLabel(getObjectChangesSum());
 	}
 
 	private int getObjectChangesSum() {
